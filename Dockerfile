@@ -1,13 +1,14 @@
-# Use uma imagem base do Java
-FROM amazoncorretto:17-alpine-jdk
+# Use uma imagem base do JDK 17
+FROM openjdk:17-jdk-slim
 
-# Define o diretório de trabalho dentro do container
-WORKDIR /app
+# Adicione um argumento para especificar a versão do jar
+ARG JAR_FILE=target/*.jar
 
-# Copie o jar da sua aplicação para o diretório de trabalho
-COPY target/tsidgenerator-0.0.1-SNAPSHOT.jar /app/tsidgenerator-0.0.1-SNAPSHOT.jar
+# Copie o jar da sua aplicação para a imagem
+COPY ${JAR_FILE} app.jar
 
+# Exponha a porta que sua aplicação usará
 EXPOSE 8080
 
-# Define o comando padrão para rodar a aplicação
-CMD ["java", "-jar", "/app/tsidgenerator-0.0.1-SNAPSHOT.jar"]
+# Comando para executar sua aplicação
+ENTRYPOINT ["java", "-jar", "/app.jar"]
