@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copie o jar da sua aplicação para o diretório de trabalho
-COPY target/seu-app.jar /app/seu-app.jar
+COPY target/tsidgenerator-0.0.1-SNAPSHOT.jar /app/tsidgenerator-0.0.1-SNAPSHOT.jar
 
 # Define o comando padrão para rodar a aplicação
-CMD ["java", "-jar", "seu-app.jar"]
+CMD ["java", "-jar", "tsidgenerator-0.0.1-SNAPSHOT.jar"]
