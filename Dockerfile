@@ -1,11 +1,21 @@
-# Use uma imagem base do JDK 17
+# Use uma imagem base do Maven para construir o projeto
+FROM maven:3.8.5-openjdk-17 AS build
+
+# Copie o código-fonte para a imagem
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+
+# Navegue até o diretório da aplicação
+WORKDIR /usr/src/app
+
+# Execute a construção do projeto
+RUN mvn clean package -DskipTests
+
+# Use uma imagem base do JDK 17 para a aplicação
 FROM openjdk:17-jdk-slim
 
-# Adicione um argumento para especificar a versão do jar
-ARG JAR_FILE=target/*.jar
-
-# Copie o jar da sua aplicação para a imagem
-COPY ${JAR_FILE} app.jar
+# Copie o jar construído da etapa anterior
+COPY --from=build /usr/src/app/target/*.jar app.jar
 
 # Exponha a porta que sua aplicação usará
 EXPOSE 8080
