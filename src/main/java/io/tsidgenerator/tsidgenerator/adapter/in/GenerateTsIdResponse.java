@@ -4,7 +4,7 @@ import com.github.f4b6a3.tsid.Tsid;
 
 public final class GenerateTsIdResponse {
     private final String valueAsString;
-    private final Long valueAsLong;
+    private final String valueAsLong;
 
     private GenerateTsIdResponse() {
         this.valueAsString = null;
@@ -13,7 +13,7 @@ public final class GenerateTsIdResponse {
 
     private GenerateTsIdResponse(final String valueAsString, final Long valueAsLong) {
         this.valueAsString = valueAsString;
-        this.valueAsLong = valueAsLong;
+        this.valueAsLong = valueAsLong.toString();
     }
 
     public static GenerateTsIdResponse from(final Tsid tsid) {
@@ -24,7 +24,7 @@ public final class GenerateTsIdResponse {
         return valueAsString;
     }
 
-    public Long getValueAsLong() {
+    public String getValueAsLong() {
         return valueAsLong;
     }
 }
