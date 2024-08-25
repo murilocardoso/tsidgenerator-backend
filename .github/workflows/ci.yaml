@@ -25,7 +25,7 @@ jobs:
 
     - name: Construir imagem Docker
       run: |
-        docker build -t tsidgeneratorbackend:${{ github.sha }} .
+        docker build -t murilocardoso/tsidgeneratorbackend:${{ github.sha }} .
 
     - name: Login no Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
@@ -35,5 +35,5 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push da imagem Docker
-      run: docker push tsidgeneratorbackend:${{ github.sha }}
+      run: docker push murilocardoso/tsidgeneratorbackend:${{ github.sha }}
       if: github.ref == 'refs/heads/main'
