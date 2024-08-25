@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '17'
-        distribution: 'openjdk'
+        distribution: 'open'
 
     - name: Construir e testar com Maven
       run: mvn clean verify
