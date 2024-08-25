@@ -2,11 +2,11 @@ name: Development Pipeline
 
 on:
   push:
-    branches:
-      - '**' # Executa em qualquer branch que não seja a main
+    branches-ignore:
+      - main # Executa em qualquer branch que não seja a main
   pull_request:
-    branches:
-      - '**' # Executa para qualquer pull request
+    branches-ignore:
+      - main # Executa para qualquer pull request
 
 jobs:
   test:
