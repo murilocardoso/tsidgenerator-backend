@@ -9,7 +9,8 @@ COPY pom.xml /usr/src/app
 WORKDIR /usr/src/app
 
 # Execute a construção do projeto
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests && \
+    rm -rf ~/.m2/repository
 
 # Use uma imagem base do JDK 17 para a aplicação
 FROM openjdk:17-jdk-slim
