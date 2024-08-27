@@ -7,7 +7,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TsidGeneratorApplicationTests {
 
 	@Test
-	void contextLoads() {
-	}
-
+	void contextLoads(){ /* just because the class must have an test method */ }
 }
