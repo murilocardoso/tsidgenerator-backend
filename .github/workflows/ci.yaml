@@ -9,6 +9,7 @@ on:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  DOCKER_IMAGE_HOST: docker.io
   DOCKER_IMAGE_BASE_NAME: murilocardoso/tsidgeneratorbackend
   RENDER_SERVICE_ID: srv-cr6hhnjqf0us73ef55c0
   RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
@@ -42,7 +43,7 @@ jobs:
 
     - name: Acionar deploy no Render
       run: |
-        curl -X POST "https://api.render.com/v1/services/${{ env.RENDER_SERVICE_ID }}/deploys" \
+        curl --fail -X POST "https://api.render.com/v1/services/${{ env.RENDER_SERVICE_ID }}/deploys" \
         -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
         -H "Content-Type: application/json" \
-        -d '{"image": "${{ env.DOCKER_IMAGE_BASE_NAME }}:${{ github.sha }}"}'
+        -d '{"imageUrl": "${{ env.DOCKER_IMAGE_HOST }}/${{ env.DOCKER_IMAGE_BASE_NAME }}:${{ github.sha }}"}'
