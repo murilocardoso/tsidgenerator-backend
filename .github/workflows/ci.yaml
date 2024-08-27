@@ -45,4 +45,4 @@ jobs:
         curl -X POST "https://api.render.com/v1/services/${{ env.RENDER_SERVICE_ID }}/deploys" \
         -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
         -H "Content-Type: application/json" \
-        -d '{"imageUrl": "${{ env.DOCKER_IMAGE_BASE_NAME }}:${{ github.sha }}"}'
+        -d '{"image": "${{ env.DOCKER_IMAGE_BASE_NAME }}:${{ github.sha }}"}'
