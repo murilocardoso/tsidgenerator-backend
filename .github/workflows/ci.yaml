@@ -9,7 +9,7 @@ env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   DOCKER_IMAGE_HOST: docker.io
   DOCKER_IMAGE_BASE_NAME: murilocardoso/tsidgeneratorbackend
-  RENDER_SERVICE_ID: srv-cr6hhnjqf0us73ef55c0
+  RENDER_SERVICE_ID: srv-cqkedaiju9rs738mau40
   RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
   
 jobs:
