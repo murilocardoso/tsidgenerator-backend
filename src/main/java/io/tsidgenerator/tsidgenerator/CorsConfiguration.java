@@ -10,7 +10,8 @@ public class CorsConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(final CorsRegistry registry) {
         registry.addMapping("/**")
-            .allowedOrigins("http://localhost:4200", "https://tsidgenerator-frontend.onrender.com", "http://localhost:8080")
+            .allowedOrigins("http://localhost:4200", "https://tsidgenerator-frontend.onrender.com", "http://localhost:8080",
+            "https://www.tsidgenerator.com")
             .allowedMethods("GET", "OPTIONS", "HEAD", "TRACE", "CONNECT");
     }
 }
